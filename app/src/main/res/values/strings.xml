@@ -6,6 +6,7 @@
     <string name="kal">Kaloryczność</string>
     <string name="nap">Napój</string>
     <string name="pos">Posiłek</string>
+    <string name="dzis">DZIŚ</string>
     <string name="title_activity_napoj">Napoj</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
@@ -13,7 +14,7 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="nazwa">Wpisz nazwę </string>
-    <string name="wartosc">Podaj wartość</string>
+    <string name="wartosc">Podaj wartość (w litrach)</string>
     <string name="pomin">Pomiń</string>
     <string name="title_activity_dodaj_n">DodajN</string>
     <string name="title_activity_main2">Main2Activity</string>

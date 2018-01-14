@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
+    android:background="@color/colortlo"
     android:layout_height="match_parent"
     tools:context="com.example.am.oi.Napoj$PlaceholderFragment"
     android:orientation="horizontal">

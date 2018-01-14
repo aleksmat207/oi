@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteCursor;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -227,13 +228,14 @@ class MyTimerTask extends TimerTask {
 
         // To support 2.3 os, we use "Notification" class and 3.0+ os will use
         // "NotificationCompat.Builder" class.
-
+        long[] pattern = {500,500,500,500,500,500,500,500,500};
+        Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(
                     context);
             notification = builder.setContentIntent(contentIntent)
                     .setSmallIcon(icon).setTicker(appname).setWhen(0)
                     .setAutoCancel(true).setContentTitle(appname)
-                    .setContentText(message).setSound(Uri.parse("android.resource://pro.shlokapp.hanumanchalisa/")).build();
+                    .setContentText(message).setVibrate(pattern).setSound(sound).build();
 
             notificationManager.notify((int) when, notification);
 
