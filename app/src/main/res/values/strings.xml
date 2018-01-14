@@ -16,6 +16,7 @@
     <string name="wartosc">Podaj wartość</string>
     <string name="pomin">Pomiń</string>
     <string name="title_activity_dodaj_n">DodajN</string>
+    <string name="title_activity_main2">Main2Activity</string>
 
 
 </resources>

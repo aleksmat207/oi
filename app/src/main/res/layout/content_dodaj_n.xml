@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
+    android:background="@color/colortlo"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.am.oi.DodajN"
@@ -14,6 +14,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/colortlo"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
@@ -25,14 +26,17 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
+            android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Rodzaj" />
 
         <EditText
             android:id="@+id/enazwa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginLeft="5dp"
             android:inputType="textPersonName"
             android:labelFor="@+id/eilosc"
@@ -41,51 +45,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Ilość" />
 
         <EditText
             android:id="@+id/eilosc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginLeft="5dp"
             android:inputType="textPersonName"
             android:labelFor="@+id/eilosc"
             android:text="@string/wartosc" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kaloryczność" />
 
-        <EditText
-            android:id="@+id/ekalorycznosc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:inputType="textPersonName"
-            android:labelFor="@+id/eilosc"
-            android:text="@string/wartosc" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_marginLeft="5dp"
-            android:layout_row="1"
-            android:text="@string/pomin" />
+
+
+
 
         <Button
             android:id="@+id/dodaj"
+            android:layout_marginTop="200dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@color/blekit"
             android:layout_gravity="center_horizontal"
             android:text="DODAJ!" />
+
         <Button
             android:layout_width="match_parent"
             android:onClick="click"
-            android:id="@+id/btn2"
+            android:id="@+id/pokaz"
+            android:layout_marginTop="5dp"
+            android:background="@color/blekit"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Sprawdź POPRZEDNIE" />

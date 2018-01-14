@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colortlo"
+    android:orientation="vertical"
     tools:context="com.example.am.oi.MainActivity">
 
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="90dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="313dp"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:text="Użytkowniku, witaj  serdecznie w aplikacji Water Hero! Czy wiesz, że zalecana ilość spożywanych płynów to ok 3litry dziennie?
+ Jednak większość osób wypija zaledwie połowę z zalecanej ilości.
+Nasza aplikacja pomoże Ci utrzymać odpowiednie nawodnienie organizmu" />
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -14,8 +28,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:shadowColor="@color/colorPrimaryDark"
         android:text="@string/dodaj_nap"
         android:onClick="click"
+        android:background="@color/blekit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,20 +39,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/dodaj_pos"
-        android:onClick="click"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

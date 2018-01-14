@@ -3,6 +3,7 @@ package com.example.am.oi;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -24,8 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(
                 "create table Napoje(" + "ID INTEGER PRIMARY KEY AUTOINCREMENT ," +
                         KEY_NAPOJ +" TEXT," +
-                        "ILOSC INTEGER," +
-                        "KALORYCZNOSC INTEGER  );" + "");
+                        "ILOSC INTEGER);" + "");
     }
 
     @Override
@@ -34,17 +34,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean wstawdane(String NAPOJ, String ILOSC, String KALORYCZNOSC) {
+    public boolean wstawdane(String NAPOJ, String ILOSC) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(KEY_NAPOJ, NAPOJ);
         cv.put("ILOSC", ILOSC);
-        cv.put("KALORYCZNOSC", KALORYCZNOSC);
+
         if (db.insert(database_table, null, cv) == -1) {
             return false;
         } else {
             return true;
         }
+    }
+    public SQLiteCursor pobierzDane(){
+        SQLiteDatabase db=this.getWritableDatabase();
+        SQLiteCursor kursor= (SQLiteCursor) db.rawQuery("SELECT * FROM " + database_table, null);
+        return kursor;
     }
 
 
