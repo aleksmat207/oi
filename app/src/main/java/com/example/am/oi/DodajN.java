@@ -82,8 +82,8 @@ public class DodajN extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         MyTimerTask myTask = new MyTimerTask();
         Timer myTimer = new Timer();
-
-        myTimer.schedule(myTask, 5000, 15000);
+int czas=15000*4;
+        myTimer.schedule(myTask, 5000, 360000); //co godzinę
 
 
 
@@ -228,7 +228,7 @@ class MyTimerTask extends TimerTask {
 
         // To support 2.3 os, we use "Notification" class and 3.0+ os will use
         // "NotificationCompat.Builder" class.
-        long[] pattern = {500,500,500,500,500,500,500,500,500};
+        long[] pattern = {500,500};
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(
                     context);

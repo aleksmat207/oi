@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
 
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="150dp"
             android:background="@color/blekit"
             android:text="DODAJ!" />
 
@@ -78,6 +78,16 @@
             android:background="@color/blekit"
             android:onClick="click"
             android:text="Sprawdź POPRZEDNIE" />
+
+       <Button
+        android:id="@+id/usun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:background="@color/blekit"
+        android:onClick="click"
+        android:text="Usuń dane" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
