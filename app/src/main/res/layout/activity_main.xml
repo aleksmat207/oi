@@ -15,11 +15,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="313dp"
-        android:textColor="@color/white"
         android:gravity="center_horizontal"
-        android:text="Użytkowniku, witaj  serdecznie w aplikacji Water Hero! Czy wiesz, że zalecana ilość spożywanych płynów to ok 3litry dziennie?
- Jednak większość osób wypija zaledwie połowę z zalecanej ilości.
-Nasza aplikacja pomoże Ci utrzymać odpowiednie nawodnienie organizmu" />
+        android:text="Użytkowniku, witaj  serdecznie w aplikacji Pora na wodę! Czy wiesz, że zalecana ilość spożywanych płynów to ok. 3 litry dziennie? Jednak większość osób wypija zaledwie połowę z zalecanej ilości. Nasza aplikacja przypomni Ci o regularnym sięganiu po szklankę wody oraz pomoże utrzymać odpowiednie nawodnienie organizmu."
+        android:textColor="@color/white" />
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -29,7 +27,7 @@ Nasza aplikacja pomoże Ci utrzymać odpowiednie nawodnienie organizmu" />
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:shadowColor="@color/colorPrimaryDark"
-        android:text="@string/dodaj_nap"
+        android:text="Rozpocznij!"
         android:onClick="click"
         android:background="@color/blekit"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,28 +19,42 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.am.oi.DataBaseHelper.database_name;
+
 public class DodajN extends AppCompatActivity {
 
 
-    Button dodaj, pokaz;
-    EditText enazwa, eilosc, ekalorycznosc;
+    public static int napoje;
 
+    Button dodaj, pokaz, usun, stat;
+    EditText enazwa, eilosc, podajID;
+
+    public static int getNapoje() {
+        return napoje;
+    }
+
+    public static void setNapoje(int napoje) {
+        DodajN.napoje = napoje;
+    }
 
     public DodajN() {
     }
 
-    public DodajN(Button dodaj, EditText enazwa, EditText eilosc, Button pokaz) {
+    public DodajN(Button dodaj,EditText podajID, EditText enazwa, Button usun, EditText eilosc, Button pokaz, Button stat) {
         this.dodaj = dodaj;
-
+        this.usun=usun;
         this.enazwa = enazwa;
+        this.stat=stat;
         this.eilosc = eilosc;
-
+        this.podajID=podajID;
         this.pokaz = pokaz;
 
     }
@@ -48,8 +63,31 @@ public class DodajN extends AppCompatActivity {
         return dodaj;
     }
 
+    public Button getStat() {
+        return stat;
+    }
+
+    public void setStat(Button stat) {this.stat = stat;
+    }
+
     public void setDodaj(Button dodaj) {
         this.dodaj = dodaj;
+    }
+
+    public Button getUsun() {
+        return usun;
+    }
+
+    public void setUsun(Button usun) {
+        this.usun = usun;
+    }
+
+    public EditText getPodajID() {
+        return podajID;
+    }
+
+    public void setPodajID(EditText podajID) {
+        this.podajID = podajID;
     }
 
     public Button getPokaz() {
@@ -77,81 +115,69 @@ public class DodajN extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         MyTimerTask myTask = new MyTimerTask();
         Timer myTimer = new Timer();
-int czas=15000*4;
-        myTimer.schedule(myTask, 5000, 360000); //co godzinę
-
-
+        int czas = 360000*6;
+        myTimer.schedule(myTask, 5000, 2160000); //co godzinę
+            String col2;
+      
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodaj_n);
-        final DataBaseHelper db = new DataBaseHelper(this);
 
+        final DataBaseHelper db = new DataBaseHelper(this);
+        usun= (Button) findViewById(R.id.usun);
         dodaj = (Button) findViewById(R.id.dodaj);
+        podajID=(EditText) findViewById(R.id.podajID) ;
+        stat=(Button) findViewById(R.id.stat);
         enazwa = (EditText) findViewById(R.id.enazwa);
         eilosc = (EditText) findViewById(R.id.eilosc);
         //ekalorycznosc = (EditText) findViewById(R.id.ekalorycznosc);
 
+
         pokaz = (Button) findViewById(R.id.pokaz);
+        stat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    Intent intent;
+                    intent = new Intent(DodajN.this, Napoj.class);
+                    intent.putExtra("napoje", napoje);
+
+                    startActivity(intent);
+            }
+        });
+        usun.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                if (db.usunRekordy(podajID.getText().toString())) {
+                    Toast.makeText(DodajN.this, "Usunięto wpis", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(DodajN.this, "Wystąpił błąd. Spróbuj ponownie", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
         pokaz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SQLiteCursor kursor = db.pobierzDane();
                 if (kursor.getCount() > 0) {
                     StringBuffer buff = new StringBuffer();
-                    ArrayList<String> napoje = null;
                     while (kursor.moveToNext()) {
                         buff.append("ID:" + kursor.getString(0) + "\n");
                         buff.append("NAPOJ:" + kursor.getString(1) + "\n");
                         buff.append("ILOSC:" + kursor.getString(2) + "\n");
 
-                        napoje = new ArrayList<>();
-                        ArrayList<String> ilosc = new ArrayList<>();
-
-
-                        String col2 = buff.append("NAPOJ:" + kursor.getString(1) + "\n").toString();
-                        String col3 = buff.append("ILOSC:" + kursor.getString(2) + "\n").toString();
-
-                        napoje.add(col2);
-                        ilosc.add(col3);
-
                     }
-                    Intent intent;
-                    intent = new Intent(DodajN.this, Napoj.class);
-                   intent.putExtra("napoje", napoje);
-
-                    startActivity(intent);
-                }
+                PokazWiadomosc("Ile dzisiaj wypiłeś?", buff.toString());
+                }else
+                PokazWiadomosc("Ile dzisiaj wypiłeś?", "Coś poszło nie tak");
             }
-        });
-
-
-//        pokaz.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                SQLiteCursor kursor = db.pobierzDane();
-//                if (kursor.getCount() > 0) {
-//                    StringBuffer buff = new StringBuffer();
-//                    while (kursor.moveToNext()) {
-//                        buff.append("ID:" + kursor.getString(0) + "\n");
-//                        buff.append("NAPOJ:" + kursor.getString(1) + "\n");
-//                        buff.append("ILOSC:" + kursor.getString(2) + "\n");
-//                        buff.append("KALORYCZNOSC:" + kursor.getString(3) + "\n");
-//
-//
-//                        String col2= buff.append("NAPOJ:" + kursor.getString(1) + "\n").toString();
-//                        String col3= buff.append("ILOSC:" + kursor.getString(2) + "\n").toString();
-//                        String col4= buff.append("KALORYCZNOSC:" + kursor.getString(3) + "\n").toString();
-//                    }
-//                PokazWiadomosc("rek", buff.toString());
-//                }else
-//                PokazWiadomosc("nie", "rek");
-//            }
-        //       });
+               });
 
         dodaj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,13 +230,12 @@ int czas=15000*4;
     }
 
 
+    class MyTimerTask extends TimerTask {
+        public void run() {
 
-class MyTimerTask extends TimerTask {
-    public void run() {
-
-        generateNotification(getApplicationContext(), "Czas na szklankę wody! :)");
+            generateNotification(getApplicationContext(), "Czas na szklankę wody! :)");
+        }
     }
-}
 
     private void generateNotification(Context context, String message) {
 
@@ -228,20 +253,20 @@ class MyTimerTask extends TimerTask {
 
         // To support 2.3 os, we use "Notification" class and 3.0+ os will use
         // "NotificationCompat.Builder" class.
-        long[] pattern = {500,500};
+        long[] pattern = {500, 500};
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(
-                    context);
-            notification = builder.setContentIntent(contentIntent)
-                    .setSmallIcon(icon).setTicker(appname).setWhen(0)
-                    .setAutoCancel(true).setContentTitle(appname)
-                    .setContentText(message).setVibrate(pattern).setSound(sound).build();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(
+                context);
+        notification = builder.setContentIntent(contentIntent)
+                .setSmallIcon(icon).setTicker(appname).setWhen(0)
+                .setAutoCancel(true).setContentTitle(appname)
+                .setContentText(message).setVibrate(pattern).setSound(sound).build();
 
-            notificationManager.notify((int) when, notification);
-
-        }
+        notificationManager.notify((int) when, notification);
 
     }
+
+}
 
 
 

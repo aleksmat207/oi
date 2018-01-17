@@ -18,6 +18,11 @@
     <string name="pomin">Pomiń</string>
     <string name="title_activity_dodaj_n">DodajN</string>
     <string name="title_activity_main2">Main2Activity</string>
-
+    <string name="wstep">"Użytkowniku, witaj  serdecznie w aplikacji Pora na wodę!
+        Czy wiesz, że zalecana ilość spożywanych płynów
+        to ok. 3 litry dziennie?
+ Jednak większość osób wypija zaledwie
+ połowę z zalecanej ilości.
+Nasza aplikacja przypomni Ci o regularnym sięganiu po szklankę wody oraz pomoże utrzymać odpowiednie nawodnienie organizmu."</string>
 
 </resources>

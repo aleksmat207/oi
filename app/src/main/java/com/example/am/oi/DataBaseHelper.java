@@ -46,6 +46,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    public boolean usunRekordy(String id){
+        SQLiteDatabase db =this.getWritableDatabase();
+       if( db.delete(database_table, "ID=?", new String[]{id })>0)
+        return true;
+       else return false;
+    }
     public SQLiteCursor pobierzDane(){
         SQLiteDatabase db=this.getWritableDatabase();
         SQLiteCursor kursor= (SQLiteCursor) db.rawQuery("SELECT * FROM " + database_table, null);

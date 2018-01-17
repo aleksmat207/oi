@@ -10,6 +10,7 @@
     tools:showIn="@layout/activity_dodaj_n">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
@@ -23,7 +24,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
 
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="80dp"
             android:background="@color/blekit"
             android:text="DODAJ!" />
 
@@ -78,16 +79,54 @@
             android:background="@color/blekit"
             android:onClick="click"
             android:text="Sprawdź POPRZEDNIE" />
+        <Button
+            android:id="@+id/stat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:background="@color/blekit"
+            android:onClick="click"
+            android:text="STatystyki " />
+    </LinearLayout>
 
-       <Button
+    <Button
         android:id="@+id/usun"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_gravity=""
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@color/blekit"
         android:onClick="click"
-        android:text="Usuń dane" />
-    </LinearLayout>
+        android:text="Usuń wpis nr."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89" />
+
+    <EditText
+        android:layout_width="109dp"
+        android:id="@+id/podajID"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:inputType="textPersonName"
+        android:text="ID"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886" />
+
 
 </android.support.constraint.ConstraintLayout>
